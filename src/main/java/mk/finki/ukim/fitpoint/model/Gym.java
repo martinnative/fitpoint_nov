@@ -17,9 +17,12 @@ public class Gym {
     private String name;
     private String location;
 
-    public Gym(String name, String location, Long id) {
+    private String description;
+
+    public Gym(String name, String location, Long id, String description) {
         this.name = name;
         this.location = location;
         this.id=id;
+        this.description=description;
     }
 }
