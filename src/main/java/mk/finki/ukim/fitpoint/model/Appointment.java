@@ -1,0 +1,27 @@
+package mk.finki.ukim.fitpoint.model;
+
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.sql.Time;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Data
+@Entity
+@NoArgsConstructor
+public class Appointment {
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @DateTimeFormat
+    private LocalDateTime localDateTime;
+
+
+
+}

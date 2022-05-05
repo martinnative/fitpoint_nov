@@ -19,6 +19,8 @@ public class Gym {
 
     private String description;
 
+    private Integer capacity;
+
     public Gym(String name, String location, Long id, String description) {
         this.name = name;
         this.location = location;
