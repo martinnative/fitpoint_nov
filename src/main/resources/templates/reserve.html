@@ -25,11 +25,20 @@
     <br>
     <div class="container">
         <hr>
-        <form action="">
-            <label for="">Име</label>
-            <label for="">Презиме</label>
-            <label for="">Презиме</label>
+        <form action="/reserve/make-appointment/" method="post">
+            <label for="name">Име</label>
+            <input type="text" id="name">
 
+            <label for="lastname">Презиме</label>
+            <input type="text" id="lastname">
+
+            <label for="trainer">Тренер</label>
+            <input type="radio" id="trainer">
+
+            <label for="time">Време</label>
+            <input type="datetime-local" id="time">
+
+            <button type="submit">Резервирај термин</button>
         </form>
 
     </div>
