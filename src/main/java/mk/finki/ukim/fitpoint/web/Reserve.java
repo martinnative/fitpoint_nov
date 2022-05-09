@@ -26,6 +26,6 @@ public class Reserve {
     public String makeAppointment (){
 
 
-       return ;
+       return "redirect:/" ;
     }
 }
