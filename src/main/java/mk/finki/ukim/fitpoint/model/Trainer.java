@@ -1,4 +1,4 @@
-package mk.finki.ukim.fitpoint.model.exceptions;
+package mk.finki.ukim.fitpoint.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
