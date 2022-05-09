@@ -2,7 +2,7 @@ package mk.finki.ukim.fitpoint.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.finki.ukim.fitpoint.model.exceptions.Trainer;
+
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
