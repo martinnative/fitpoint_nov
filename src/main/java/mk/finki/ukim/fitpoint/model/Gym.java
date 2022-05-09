@@ -2,6 +2,7 @@ package mk.finki.ukim.fitpoint.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import mk.finki.ukim.fitpoint.model.exceptions.Trainer;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,8 @@ public class Gym {
     private Long id;
     private String name;
     private String location;
+
+    //private Trainer trainerName;
 
     public Gym(Long id, String name, String location) {
         this.id = id;
