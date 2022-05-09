@@ -15,9 +15,8 @@
             <a href="#" class="navbar-brand ">Home</a>
         </div>
         <ul class="navbar-nav me-auto">
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Services</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">За нас</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Контакт</a></li>
         </ul>
     </nav>
     <br>
@@ -29,14 +28,12 @@
             <div class="col">
                 <h5 th:text="${gym.getLocation()}"></h5>
                 <h3 th:text="${gym.getName()}"></h3>
-                <button><a href="@{'/reserve/{id}' (id=${gym.getId()})}">Резервирај термин</a></button>
+                <button><a th:href="@{'/reserve/{id}' (id=${gym.getId()})}">Резервирај термин</a></button>
             </div>
-            <br>
-            <br>
-            <br>
             <hr>
             <br>
         </div>
+        <br>
     </div>
     <br>
     <hr>

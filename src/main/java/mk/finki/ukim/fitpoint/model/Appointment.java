@@ -7,9 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Time;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Entity
@@ -22,6 +20,11 @@ public class Appointment {
     @DateTimeFormat
     private LocalDateTime localDateTime;
 
+    private Integer duration;
 
-
+    public Appointment(Long id, LocalDateTime localDateTime, Integer duration) {
+        this.id = id;
+        this.localDateTime = localDateTime;
+        this.duration = duration;
+    }
 }

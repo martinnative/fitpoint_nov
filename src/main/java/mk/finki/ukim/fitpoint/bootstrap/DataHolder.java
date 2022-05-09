@@ -1,7 +1,8 @@
 package mk.finki.ukim.fitpoint.bootstrap;
 
-import lombok.Getter;
+import mk.finki.ukim.fitpoint.Service.GymService;
 import mk.finki.ukim.fitpoint.model.Gym;
+import mk.finki.ukim.fitpoint.repository.GymRepository;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -10,14 +11,18 @@ import java.util.List;
 
 @Component
 public class DataHolder {
-    public static List<Gym> gyms = new ArrayList<>();
+
+    private final GymService gymService;
+    public DataHolder(GymService gymService) {
+        this.gymService = gymService;
+    }
 
     @PostConstruct
     public void init(){
-        gyms.add(new Gym(1L,"Synergy","Aerodrom"));
-        gyms.add(new Gym(2L,"Magnus","Kisela Voda"));
-        gyms.add(new Gym(3L,"Fierce Fitness","Centar"));
-        gyms.add(new Gym(4L,"Sky Wellness","Aerodrom"));
-        gyms.add(new Gym(5L,"FID","Avtokomanda"));
+        this.gymService.save(new Gym(2L,"Magnus","Kisela Voda"));
+        this.gymService.save(new Gym(3L,"Fierce Fitness","Centar"));
+        this.gymService.save(new Gym(4L,"Sky Wellness","Aerodrom"));
+        this.gymService.save(new Gym(2L,"Magnus","Kisela Voda"));
+        this.gymService.save(new Gym(5L,"FID","Avtokomanda"));
     }
 }
