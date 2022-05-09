@@ -23,6 +23,7 @@ public class Reserve {
     @GetMapping("/{id}")
     public String getReserve(@PathVariable Long id, Model model){
        model.addAttribute("gym",gymService.findById(id));
+       model.addAttribute("trainers",trainerService.findAll());
        return "reserve";
     }
     @PostMapping("/make-appointment/")
