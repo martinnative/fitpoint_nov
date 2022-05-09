@@ -17,14 +17,9 @@ public class Gym {
     private String name;
     private String location;
 
-    private String description;
-
-    private Integer capacity;
-
-    public Gym(String name, String location, Long id, String description) {
+    public Gym(Long id, String name, String location) {
+        this.id = id;
         this.name = name;
         this.location = location;
-        this.id=id;
-        this.description=description;
     }
 }

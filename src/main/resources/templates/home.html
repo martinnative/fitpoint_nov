@@ -25,11 +25,10 @@
     <br>
     <div class="container">
         <hr>
-        <div th:each="gym : ${gyms}" class="row">
+        <div th:each="gym:${gyms}" class="row">
             <div class="col">
                 <h5 th:text="${gym.getLocation()}"></h5>
                 <h3 th:text="${gym.getName()}"></h3>
-                <p th:text="${gym.getDescription}"></p>
                 <button><a href="@{'/reserve/{id}' (id=${gym.getId()})}">Резервирај термин</a></button>
             </div>
             <br>
