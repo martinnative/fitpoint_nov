@@ -31,11 +31,18 @@
             <label for="lastname">Презиме</label>
             <input type="text" id="lastname">
             <br>
-            <label for="trainer">Тренер</label>
-            <input type="radio" id="trainer">
+            <div>
+                <p>Изберете тренер:</p>
+                <label for="trainer">Тренер -></label>
+                <select name="trainer" id="trainer">
+                    <option th:each="trainer:${trainers}" th:value="${trainer.getId()}" th:text="${trainer.getName()}"></option>
+                </select>
+            </div>
             <br>
             <label for="time">Време</label>
             <input type="datetime-local" id="time">
+            <br>
+            <hr>
             <br>
             <button type="submit">Резервирај термин</button>
         </form>

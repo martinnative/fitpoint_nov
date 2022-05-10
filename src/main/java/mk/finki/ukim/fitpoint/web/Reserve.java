@@ -2,12 +2,12 @@ package mk.finki.ukim.fitpoint.web;
 
 import mk.finki.ukim.fitpoint.Service.GymService;
 import mk.finki.ukim.fitpoint.Service.TrainerService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @Controller
 @RequestMapping("/reserve")
@@ -27,7 +27,10 @@ public class Reserve {
        return "reserve";
     }
     @PostMapping("/make-appointment/")
-    public String makeAppointment (){
+    public String makeAppointment (@RequestParam String name,
+                                   @RequestParam String lastname,
+                                   @RequestParam Long trainerId,
+                                   @RequestParam LocalDateTime time, Model model){
 
        return "redirect:/" ;
     }

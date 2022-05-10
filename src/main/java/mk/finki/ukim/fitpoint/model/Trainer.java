@@ -16,7 +16,6 @@ public class Trainer {
     private String name;
     private String lastname;
     private String number;
-
     @ManyToOne
     private Gym gym;
 

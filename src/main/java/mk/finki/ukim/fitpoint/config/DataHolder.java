@@ -1,7 +1,9 @@
 package mk.finki.ukim.fitpoint.config;
 
 import mk.finki.ukim.fitpoint.Service.GymService;
+import mk.finki.ukim.fitpoint.Service.TrainerService;
 import mk.finki.ukim.fitpoint.model.Gym;
+import mk.finki.ukim.fitpoint.model.Trainer;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 
@@ -10,8 +12,10 @@ import javax.annotation.PostConstruct;
 public class DataHolder {
 
     private final GymService gymService;
-    public DataHolder(GymService gymService) {
+    private final TrainerService trainerService;
+    public DataHolder(GymService gymService, TrainerService trainerService) {
         this.gymService = gymService;
+        this.trainerService = trainerService;
     }
 
     @PostConstruct
@@ -21,5 +25,14 @@ public class DataHolder {
         this.gymService.save(new Gym(4L,"Sky Wellness","Aerodrom"));
         this.gymService.save(new Gym(5L,"Gladiator","Kisela Voda"));
         this.gymService.save(new Gym(6L,"FID","Avtokomanda"));
+
+        Gym gym1 = new Gym(2L,"Magnus","Kisela Voda");
+        Gym gym2 = new Gym(3L,"Fierce Fitness","Centar");
+        Gym gym3 = new Gym(4L,"Sky Wellness","Aerodrom");
+
+        trainerService.save(new Trainer(1L,"Marko","Simonovski","078654123",gym1));
+        trainerService.save(new Trainer(2L,"Simon","Petrovski","072478102",gym2));
+        trainerService.save(new Trainer(3L,"Petar","Markovski","07509132",gym3));
+
     }
 }
