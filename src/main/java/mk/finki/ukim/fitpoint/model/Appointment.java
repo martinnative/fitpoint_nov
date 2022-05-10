@@ -4,9 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -21,6 +19,9 @@ public class Appointment {
     private LocalDateTime localDateTime;
 
     private Integer duration;
+
+    @OneToOne
+    private User user;
 
     public Appointment(Long id, LocalDateTime localDateTime, Integer duration) {
         this.id = id;
