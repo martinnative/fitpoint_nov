@@ -2,8 +2,6 @@ package mk.finki.ukim.fitpoint.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.finki.ukim.fitpoint.model.Trainer;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -19,9 +17,22 @@ public class Gym {
     @ManyToMany(mappedBy = "gyms")
     private List<Trainer> trainerName;
 
+    public Gym(Long id, String name, String location, List<Trainer> trainerName) {
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.trainerName = trainerName;
+    }
+
     public Gym(Long id, String name, String location) {
         this.id = id;
         this.name = name;
         this.location = location;
+    }
+
+    public Gym(String name, String location, List<Trainer> trainerName) {
+        this.name = name;
+        this.location = location;
+        this.trainerName = trainerName;
     }
 }

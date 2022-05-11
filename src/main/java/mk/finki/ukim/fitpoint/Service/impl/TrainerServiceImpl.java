@@ -5,6 +5,7 @@ import mk.finki.ukim.fitpoint.model.Gym;
 import mk.finki.ukim.fitpoint.model.Trainer;
 import mk.finki.ukim.fitpoint.model.exceptions.InvalidTrainerException;
 import mk.finki.ukim.fitpoint.repository.TrainerRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

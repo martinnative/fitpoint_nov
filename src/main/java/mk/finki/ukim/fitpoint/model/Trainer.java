@@ -17,7 +17,7 @@ public class Trainer {
     private String name;
     private String lastname;
     private String number;
-    @ManyToMany(mappedBy = "trainerName")
+    @ManyToMany()
     private List<Gym> gyms;
 
     public Trainer(Long id, String name, String lastname, String number, List<Gym> gyms) {

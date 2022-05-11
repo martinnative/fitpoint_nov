@@ -23,9 +23,10 @@ public class Appointment {
     @OneToOne
     private User user;
 
-    public Appointment(Long id, LocalDateTime localDateTime, Integer duration) {
+    public Appointment(Long id, LocalDateTime localDateTime, Integer duration, User use) {
         this.id = id;
         this.localDateTime = localDateTime;
         this.duration = duration;
+        this.user = user;
     }
 }
