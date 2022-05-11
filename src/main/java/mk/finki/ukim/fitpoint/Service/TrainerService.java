@@ -15,7 +15,7 @@ public interface TrainerService {
 
     Trainer save(Trainer trainer);
 
-    Optional<Trainer> edit(Long id, String name, String lastname, String number, Gym gym);
+    Optional<Trainer> edit(Long id, String name, String lastname, String number, List<Gym> gyms);
 
     void deleteById(Long id);
 }

@@ -39,12 +39,12 @@ public class TrainerServiceImpl implements TrainerService {
     }
 
     @Override
-    public Optional<Trainer> edit(Long id, String name, String lastname,String number, Gym gym) {
+    public Optional<Trainer> edit(Long id, String name, String lastname,String number, List<Gym> gyms) {
         Trainer trainer = trainerRepository.findById(id).orElseThrow(InvalidTrainerException::new);
         trainer.setName(name);
         trainer.setLastname(lastname);
         trainer.setNumber(number);
-        trainer.setGym(gym);
+        trainer.setGyms(gyms);
         trainerRepository.save(trainer);
         return Optional.of(trainer);
     }

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import mk.finki.ukim.fitpoint.model.Gym;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -16,14 +17,14 @@ public class Trainer {
     private String name;
     private String lastname;
     private String number;
-    @ManyToOne
-    private Gym gym;
+    @ManyToMany(mappedBy = "trainerName")
+    private List<Gym> gyms;
 
-    public Trainer(Long id, String name, String lastname, String number, Gym gym) {
+    public Trainer(Long id, String name, String lastname, String number, List<Gym> gyms) {
         this.id = id;
         this.name = name;
         this.number = number;
-        this.gym = gym;
+        this.gyms = gyms;
         this.lastname = lastname;
     }
 }
