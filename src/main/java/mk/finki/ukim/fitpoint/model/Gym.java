@@ -17,6 +17,9 @@ public class Gym {
     @ManyToMany(mappedBy = "gyms")
     private List<Trainer> trainerName;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Training> trainings;
+
     public Gym(Long id, String name, String location, List<Trainer> trainerName) {
         this.id = id;
         this.name = name;
