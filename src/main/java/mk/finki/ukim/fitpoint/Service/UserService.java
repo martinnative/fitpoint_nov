@@ -18,4 +18,6 @@ public interface UserService {
     Optional<User> edit(Long id, String name, String username, String password);
 
     void deleteById(Long id);
+
+    Optional<User> findUserByNameAndLastname(String name, String lastname);
 }

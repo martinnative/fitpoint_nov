@@ -44,23 +44,20 @@ public class Reserve {
     public String makeAppointment (@RequestParam String name,
                                    @RequestParam String lastname,
                                    @RequestParam Long trainer,
-                                   @RequestParam @DateTimeFormat LocalDateTime time, @PathVariable Long id){
+                                   @RequestParam @DateTimeFormat String time, @PathVariable Long id){
 
-        User user = userService.findByName(name).orElseThrow(InvalidUserIdException::new);
-        if (!user.getLastname().equals(lastname)){
-            return "invalid-user";
-        }
+        User user = userService.findUserByNameAndLastname(name,lastname).orElseThrow(InvalidUserIdException::new);
         Trainer trainer1 = trainerService.findById(trainer).orElseThrow(InvalidTrainerException::new);
         List<Appointment>appointments = user.getAppointments();
         for (Appointment appointment : appointments) {
-            if (appointment.getLocalDateTime().equals(time)){
+            if (appointment.getLocalDateTime().equals(LocalDateTime.parse(time))){
                 if (appointment.getTrainer().equals(trainer1)){
                     return "appointment-exists";
                 }
             }
         }
         Gym gym = gymService.findById(id).orElseThrow(InvalidGymIdException::new);
-        Appointment appointment = new Appointment(time,1,user,gym,trainer1);
+        Appointment appointment = new Appointment(LocalDateTime.parse(time),1,user,gym,trainer1);
         appointmentService.save(appointment);
        return "appointment-created" ;
     }

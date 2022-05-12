@@ -52,4 +52,9 @@ public class UserServiceImpl implements UserService {
         userRepository.deleteById(id);
 
     }
+
+    @Override
+    public Optional<User> findUserByNameAndLastname(String name, String lastname) {
+        return userRepository.findUserByNameAndLastname(name,lastname);
+    }
 }
