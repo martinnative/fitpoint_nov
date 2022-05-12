@@ -4,7 +4,6 @@ import mk.finki.ukim.fitpoint.Service.AppointmentService;
 import mk.finki.ukim.fitpoint.model.Appointment;
 import mk.finki.ukim.fitpoint.model.User;
 import mk.finki.ukim.fitpoint.repository.AppointmentRepository;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

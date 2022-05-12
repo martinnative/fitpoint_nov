@@ -24,7 +24,7 @@
     <br>
     <div class="container">
         <hr>
-        <form action="/reserve/make-appointment/" method="post">
+        <form th:action="@{'/reserve/make-appointment/{id}' (id=${gym.getId()})}" method="POST">
             <label for="name">Име</label>
             <input type="text" id="name">
             <br>

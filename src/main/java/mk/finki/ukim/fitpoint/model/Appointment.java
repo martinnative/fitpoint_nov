@@ -23,10 +23,33 @@ public class Appointment {
     @OneToOne
     private User user;
 
-    public Appointment(Long id, LocalDateTime localDateTime, Integer duration, User use) {
+    @OneToOne
+    private Gym gym;
+
+    @OneToOne
+    private Trainer trainer;
+
+    public Appointment(Long id, LocalDateTime localDateTime, Integer duration, User user) {
         this.id = id;
         this.localDateTime = localDateTime;
         this.duration = duration;
         this.user = user;
+    }
+
+    public Appointment(Long id, LocalDateTime localDateTime, Integer duration, User user, Gym gym, Trainer trainer) {
+        this.id = id;
+        this.localDateTime = localDateTime;
+        this.duration = duration;
+        this.user = user;
+        this.gym = gym;
+        this.trainer = trainer;
+    }
+
+    public Appointment(LocalDateTime localDateTime, Integer duration, User user, Gym gym, Trainer trainer) {
+        this.localDateTime = localDateTime;
+        this.duration = duration;
+        this.user = user;
+        this.gym = gym;
+        this.trainer = trainer;
     }
 }

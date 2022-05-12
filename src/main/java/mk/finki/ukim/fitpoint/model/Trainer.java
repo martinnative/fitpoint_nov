@@ -20,6 +20,9 @@ public class Trainer {
     @ManyToMany()
     private List<Gym> gyms;
 
+    @OneToOne
+    private Appointment appointment;
+
     public Trainer(Long id, String name, String lastname, String number, List<Gym> gyms) {
         this.id = id;
         this.name = name;

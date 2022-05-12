@@ -20,6 +20,9 @@ public class Gym {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Training> trainings;
 
+    @OneToMany
+    private List<Appointment> appointments;
+
     public Gym(Long id, String name, String location, List<Trainer> trainerName) {
         this.id = id;
         this.name = name;

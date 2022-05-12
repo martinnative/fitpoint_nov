@@ -2,8 +2,6 @@ package mk.finki.ukim.fitpoint.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import mk.finki.ukim.fitpoint.Service.UserService;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

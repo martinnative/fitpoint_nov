@@ -5,10 +5,11 @@ import mk.finki.ukim.fitpoint.Service.UserService;
 import mk.finki.ukim.fitpoint.model.User;
 import mk.finki.ukim.fitpoint.model.exceptions.InvalidUserIdException;
 import mk.finki.ukim.fitpoint.repository.UserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 

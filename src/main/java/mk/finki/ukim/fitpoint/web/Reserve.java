@@ -1,20 +1,36 @@
 package mk.finki.ukim.fitpoint.web;
+import mk.finki.ukim.fitpoint.Service.AppointmentService;
 import mk.finki.ukim.fitpoint.Service.GymService;
- import mk.finki.ukim.fitpoint.model.Gym;
- import mk.finki.ukim.fitpoint.model.exceptions.InvalidGymIdException;
+import mk.finki.ukim.fitpoint.Service.TrainerService;
+import mk.finki.ukim.fitpoint.Service.UserService;
+import mk.finki.ukim.fitpoint.model.Appointment;
+import mk.finki.ukim.fitpoint.model.Gym;
+import mk.finki.ukim.fitpoint.model.Trainer;
+import mk.finki.ukim.fitpoint.model.User;
+import mk.finki.ukim.fitpoint.model.exceptions.InvalidGymIdException;
+import mk.finki.ukim.fitpoint.model.exceptions.InvalidTrainerException;
+import mk.finki.ukim.fitpoint.model.exceptions.InvalidUserIdException;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/reserve")
 public class Reserve {
     private final GymService gymService;
+    private final UserService userService;
+    private final TrainerService trainerService;
+    private final AppointmentService appointmentService;
 
-    public Reserve(GymService gymService) {
+    public Reserve(GymService gymService, UserService userService, TrainerService trainerService, AppointmentService appointmentService) {
         this.gymService = gymService;
+        this.userService = userService;
+        this.trainerService = trainerService;
+        this.appointmentService = appointmentService;
     }
 
     @GetMapping("/{id}")
@@ -24,12 +40,28 @@ public class Reserve {
        model.addAttribute("trainers",gym.getTrainerName());
        return "reserve";
     }
-    @PostMapping("/make-appointment/")
+    @PostMapping("/make-appointment/{id}")
     public String makeAppointment (@RequestParam String name,
                                    @RequestParam String lastname,
                                    @RequestParam Long trainer,
-                                   @RequestParam LocalDateTime time, Model model){
+                                   @RequestParam @DateTimeFormat LocalDateTime time, @PathVariable Long id){
 
-       return "redirect:/" ;
+        User user = userService.findByName(name).orElseThrow(InvalidUserIdException::new);
+        if (!user.getLastname().equals(lastname)){
+            return "invalid-user";
+        }
+        Trainer trainer1 = trainerService.findById(trainer).orElseThrow(InvalidTrainerException::new);
+        List<Appointment>appointments = user.getAppointments();
+        for (Appointment appointment : appointments) {
+            if (appointment.getLocalDateTime().equals(time)){
+                if (appointment.getTrainer().equals(trainer1)){
+                    return "appointment-exists";
+                }
+            }
+        }
+        Gym gym = gymService.findById(id).orElseThrow(InvalidGymIdException::new);
+        Appointment appointment = new Appointment(time,1,user,gym,trainer1);
+        appointmentService.save(appointment);
+       return "appointment-created" ;
     }
 }
