@@ -59,6 +59,6 @@ public class Reserve {
         Gym gym = gymService.findById(id).orElseThrow(InvalidGymIdException::new);
         Appointment appointment = new Appointment(LocalDateTime.parse(time),1,user,gym,trainer1);
         appointmentService.save(appointment);
-       return "appointment-created" ;
+        return "appointment-created" ;
     }
 }

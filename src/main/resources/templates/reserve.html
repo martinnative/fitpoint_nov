@@ -26,10 +26,10 @@
         <hr>
         <form th:action="@{'/reserve/make-appointment/{id}' (id=${gym.getId()})}" method="POST">
             <label for="name">Име</label>
-            <input type="text" id="name">
+            <input type="text" id="name" name="name">
             <br>
             <label for="lastname">Презиме</label>
-            <input type="text" id="lastname">
+            <input type="text" id="lastname" name="lastname">
             <br>
             <div>
                 <p>Изберете тренер:</p>
@@ -40,7 +40,7 @@
             </div>
             <br>
             <label for="time">Време</label>
-            <input type="datetime-local" id="time">
+            <input type="datetime-local" id="time" name="time">
             <br>
             <hr>
             <br>
