@@ -4,10 +4,13 @@ import mk.finki.ukim.fitpoint.Service.GymService;
 import mk.finki.ukim.fitpoint.Service.TrainerService;
 import mk.finki.ukim.fitpoint.Service.UserService;
 import mk.finki.ukim.fitpoint.model.Gym;
+import mk.finki.ukim.fitpoint.model.Role;
 import mk.finki.ukim.fitpoint.model.Trainer;
 import mk.finki.ukim.fitpoint.model.User;
 import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
+
+import static mk.finki.ukim.fitpoint.model.Role.ROLE_ADMIN;
 
 
 @Component
@@ -26,9 +29,9 @@ public class DataHolder {
     @PostConstruct
     public void init() {
 
-        userService.save(new User(1L,"Martin","martin","martin123","Fidanovski"));
-        userService.save(new User(2L,"Monika","monika","moni123","Svilanovik"));
-        userService.save(new User(3L,"Magdalena","magdalena","megi123","Janevska"));
+        userService.save(new User(1L,"Martin","martin","martin123","Fidanovski",ROLE_ADMIN));
+        userService.save(new User(2L,"Monika","monika","moni123","Svilanovik",ROLE_ADMIN));
+        userService.save(new User(3L,"Magdalena","magdalena","megi123","Janevska",ROLE_ADMIN));
 
         this.gymService.save(new Gym(1L, "Magnus", "Kisela Voda",trainerService.findAll()));
         this.gymService.save(new Gym(2L, "Fierce Fitness", "Centar",trainerService.findAll()));
